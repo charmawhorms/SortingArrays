@@ -1,0 +1,22 @@
+# SortingArrays
+Console application that uses the selection sort algorithm to sort an integer array.
+
+## Algorithm
+SELECTION SORT(arr, n)  
+  
+Step 1: Repeat Steps 2 and 3 for i = 0 to n-1  
+Step 2: CALL SMALLEST(arr, i, n, pos)  
+Step 3: SWAP arr[i] with arr[pos]  
+[END OF LOOP]  
+Step 4: EXIT  
+  
+SMALLEST (arr, i, n, pos)  
+Step 1: [INITIALIZE] SET SMALL = arr[i]  
+Step 2: [INITIALIZE] SET pos = i  
+Step 3: Repeat for j = i+1 to n  
+if (SMALL > arr[j])  
+     SET SMALL = arr[j]  
+SET pos = j  
+[END OF if]  
+[END OF LOOP]  
+Step 4: RETURN pos 
