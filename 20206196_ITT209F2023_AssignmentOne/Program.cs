@@ -17,45 +17,77 @@ namespace _20206196_ITT209F2023_AssignmentOne
 
         static void Main(string[] args)
         {
-            //Declaring an array that can hold 10 numbers
-            int[] userNumbers = new int[10];
-
-            Console.WriteLine("Welcome to the Array Sorter!");
-            Console.WriteLine("Enter 10 numbers");
-
-            for (int i = 0; i < userNumbers.Length; i++)
-            {
-                Console.WriteLine("Enter a number: ");
-                userNumbers[i] = Convert.ToInt32(Console.ReadLine());                
-            }
-
+            //Function call for the welcome message
+            WelcomeBanner();
             bool exitProgram = false;
-            //int choice = 0;
-            while (!exitProgram)
+            do
             {
-                Console.WriteLine("\n Sort the array in ascending or descending order");
-                Console.WriteLine("Enter \n 1. To sort in ascending order \n 2. To sort in descending order \n 3. To exit");
+                //Declaring an array that can hold 10 numbers
+                int[] userNumbers = new int[10];
 
+
+
+                Console.WriteLine("\nEnter 10 integers that you would like to sort");
+
+                for (int i = 0; i < userNumbers.Length; i++)
+                {
+                    Console.Write("Enter a number: ");
+                    userNumbers[i] = Convert.ToInt32(Console.ReadLine());
+                }
+                Console.Clear();
+                WelcomeBanner();
+
+
+                Console.WriteLine("\nSort the integer array in ascending or descending order");
+
+                Console.WriteLine("Enter");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("  1. ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("To sort in ascending order");
+
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("  2. ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("To sort in descending order");
+
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("  3. ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("To exit the program");
+
+                Console.Write("Choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
-                Console.Write("Unsorted numbers: ");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("\nUnsorted integers: ");
+                Console.ForegroundColor = ConsoleColor.White;
                 foreach (var userNum in userNumbers)
                 {
-                    Console.WriteLine(userNum + " ");
+                    Console.Write(userNum + " ");
                 }
 
-                if ( choice == 1 )
+                if (choice == 1)
                 {
-                    Console.WriteLine("Sorted Numbers in ascending order");
-                    userNumbers = SortArray(userNumbers , 1);
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.Write("\nSorted integers in ascending order: ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    userNumbers = SortArray(userNumbers, 1);
                 }
-                else if ( choice == 2 )
+                else if (choice == 2)
                 {
-                    Console.WriteLine("Sorted Numbers in descending order");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.Write("\nSorted Numbers in descending order: ");
+                    Console.ForegroundColor = ConsoleColor.White;
                     userNumbers = SortArray(userNumbers, 2);
                 }
-                else if ( choice == 3)
+                else if (choice == 3)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nThank you for using the Array Sorter!");
+                    Console.ReadKey();
                     exitProgram = true;
                 }
                 else
@@ -65,11 +97,54 @@ namespace _20206196_ITT209F2023_AssignmentOne
 
                 foreach (var sortedNum in userNumbers)
                 {
-                    Console.WriteLine(sortedNum + " ");
+                    Console.Write(sortedNum + " ");
                 }
-                Console.ReadKey();
-            }
+
+                Console.WriteLine("\nWould you like to enter 10 integers again? (Y/N)");
+                string answer = Console.ReadLine().ToUpper();
+
+                // If the user didn't enter "y", ask them again.
+                while (answer != "Y" && answer != "N")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nYou have entered an invalid option, please try again");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("Enter Y or N: ");
+                    answer = Console.ReadLine().ToUpper();
+                }
+
+                if (answer == "N")
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nThank you for using the Array Sorter!");
+                    Console.ReadKey();
+                    exitProgram = true;
+                }
+            } while (!exitProgram) ;
         }
+
+        public static void WelcomeBanner() {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(" _____                                                       _____ \r\n" +
+                "( ___ )-----------------------------------------------------( ___ )\r\n" +
+                " |   | __        __   _                            _         |   | \r\n" +
+                " |   | \\ \\      / /__| | ___ ___  _ __ ___   ___  | |_ ___   |   | \r\n" +
+                " |   |  \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\  |   | \r\n" +
+                " |   |   \\ V  V /  __/ | (_| (_) | | | | | |  __/ | || (_) | |   | \r\n" +
+                " |   |  _ \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___|  \\__\\___/  |   | \r\n" +
+                " |   | | |_| |__   ___     / \\   _ __ _ __ __ _ _   _        |   | \r\n" +
+                " |   | | __| '_ \\ / _ \\   / _ \\ | '__| '__/ _` | | | |       |   | \r\n" +
+                " |   | | |_| | | |  __/  / ___ \\| |  | | | (_| | |_| |       |   | \r\n" +
+                " |   |  \\__|_| |_|\\___| /_/   \\_\\_|  |_|  \\__,_|\\__, |       |   | \r\n" +
+                " |   | / ___|  ___  _ __| |_ ___ _ __| |        |___/        |   | \r\n" +
+                " |   | \\___ \\ / _ \\| '__| __/ _ \\ '__| |                     |   | \r\n" +
+                " |   |  ___) | (_) | |  | ||  __/ |  |_|                     |   | \r\n" +
+                " |   | |____/ \\___/|_|   \\__\\___|_|  (_)                     |   | \r\n" +
+                " |___|                                                       |___| \r\n" +
+                "(_____)-----------------------------------------------------(_____)");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
 
         public static int[] SortArray(int[] array, int order)
         {
