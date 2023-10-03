@@ -26,8 +26,6 @@ namespace _20206196_ITT209F2023_AssignmentOne
                 //Declaring an array that can hold 10 numbers
                 int[] userNumbers = new int[10];
 
-                //do not allow float or letters
-
                 Console.WriteLine("\nEnter 10 integers that you would like to sort");
                 
                 //Loop that asks the user to enter 10 integers and stores it in an array
@@ -37,6 +35,8 @@ namespace _20206196_ITT209F2023_AssignmentOne
                     string userInput = Console.ReadLine();
 
                     int number;
+
+                    //Converts the user's input to an integer and stores it in the number variable
                     bool validInput = int.TryParse(userInput, out number);
 
                     while (!validInput)
@@ -80,10 +80,12 @@ namespace _20206196_ITT209F2023_AssignmentOne
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.Write("\nUnsorted integers: ");
                 Console.ForegroundColor = ConsoleColor.White;
+
                 foreach (var userNum in userNumbers)
                 {
                     Console.Write(userNum + " ");
                 }
+
 
                 if (choice == 1)
                 {
@@ -111,10 +113,12 @@ namespace _20206196_ITT209F2023_AssignmentOne
                     Console.WriteLine("You have entered an invalid response");
                 }
 
+
                 foreach (var sortedNum in userNumbers)
                 {
                     Console.Write(sortedNum + " ");
                 }
+
 
                 Console.WriteLine("\nWould you like to enter 10 integers again? (Y/N)");
                 string answer = Console.ReadLine().ToUpper();
@@ -139,6 +143,7 @@ namespace _20206196_ITT209F2023_AssignmentOne
             } while (!exitProgram) ;
         }
 
+        //Welcome Banner
         public static void WelcomeBanner() {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(" _____                                                       _____ \r\n" +
