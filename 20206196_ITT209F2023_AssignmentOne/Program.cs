@@ -19,21 +19,37 @@ namespace _20206196_ITT209F2023_AssignmentOne
         {
             //Function call for the welcome message
             WelcomeBanner();
+
             bool exitProgram = false;
             do
             {
                 //Declaring an array that can hold 10 numbers
                 int[] userNumbers = new int[10];
 
-
+                //do not allow float or letters
 
                 Console.WriteLine("\nEnter 10 integers that you would like to sort");
-
+                
+                //Loop that asks the user to enter 10 integers and stores it in an array
                 for (int i = 0; i < userNumbers.Length; i++)
                 {
                     Console.Write("Enter a number: ");
-                    userNumbers[i] = Convert.ToInt32(Console.ReadLine());
+                    string userInput = Console.ReadLine();
+
+                    int number;
+                    bool validInput = int.TryParse(userInput, out number);
+
+                    while (!validInput)
+                    {
+                        Console.WriteLine("Invalid input. Please enter an integer.");
+                        userInput = Console.ReadLine();
+
+                        validInput = int.TryParse(userInput, out number);
+                    }
+
+                    userNumbers[i] = number;     
                 }
+
                 Console.Clear();
                 WelcomeBanner();
 
@@ -145,7 +161,8 @@ namespace _20206196_ITT209F2023_AssignmentOne
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-
+        //Method that is responsible for sorting the array in an ascending
+        //or descending order
         public static int[] SortArray(int[] array, int order)
         {
             var arrayLength = array.Length;
